@@ -18,8 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Controller implements Runnable {
-    public static final String BASE_URL = "https://olimp.miet.ru/ppo_it_final/";
-    public static AllJson data;
+    public static final String BASE_URL = "https://olimp.miet.ru/";
+
     int day;
     int month;
     int year;
@@ -40,8 +40,9 @@ public class Controller implements Runnable {
         apiService.getData(day, year, month).enqueue(new Callback<AllJson>() {
             @Override
             public void onResponse(@NonNull Call<AllJson> call, @NonNull Response<AllJson> response) {
+
                 assert response.body() != null;
-                Log.d("dfghjkjhgfghjhgfghjkjhgbhnm", response.body().getAll().getDate().getDescription());
+                Log.d("dfghjkjhgfghjhgfghjkjhgbhnm", response.body().getData().getDate().getDescription());
 
             }
 
