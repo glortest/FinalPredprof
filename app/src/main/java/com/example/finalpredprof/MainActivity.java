@@ -43,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
         gridView = findViewById(R.id.grid_view);
 
 
+        buttonDate.setOnClickListener(l -> {
+            String[] date = textInDate.getText().toString().split("-");
+            String day = date[0];
+            String month = date[1];
+            String year = date[2];
+
+            // retrofit
+        });
+
+
 
 
         Controller controller = new Controller(25,1, 23);
@@ -57,31 +67,43 @@ public class MainActivity extends AppCompatActivity {
             Date date = new Date();
             Date roomsCount = new Date();
 
-            Floor floor = new Floor();
+            Floor floor1 = new Floor();
+            Floor floor2 = new Floor();
             Windows windows = new Windows();
             WindowsForRoom windowsForRoom = new WindowsForRoom();
 
 
             ArrayList<Integer> data_windows_for_room = new ArrayList<>();
+            data_windows_for_room.add(3);
+            data_windows_for_room.add(2);
+            data_windows_for_room.add(1);
             windowsForRoom.setData(data_windows_for_room);
-            windowsForRoom.setDescription("description_windows_for_room");
+            windowsForRoom.setDescription("Количество окон в каждой из комнат на этаже слева направо");
 
-            ArrayList<Boolean> lightArr_floor = new ArrayList<>();
-            floor.setLightArr(lightArr_floor);
+            ArrayList<Boolean> lightArr_floor1 = new ArrayList<>();
+            lightArr_floor1.add(false);
+            lightArr_floor1.add(true);
+            floor1.setLightArr(lightArr_floor1);
+
+            ArrayList<Boolean> lightArr_floor2 = new ArrayList<>();
+            lightArr_floor2.add(true);
+            lightArr_floor2.add(false);
+            floor2.setLightArr(lightArr_floor2);
 
             ArrayList<Floor> floors_data = new ArrayList<>();
-            floors_data.add(floor);
+            floors_data.add(floor1);
+            floors_data.add(floor2);
             data.setFloors(floors_data);
 
-            date.setData(1);
-            date.setDescription("desc_date");
+            date.setData(1674594000);
+            date.setDescription("Татьянин день");
 
-            roomsCount.setData(2);
-            roomsCount.setDescription("desc_roomCount");
+            roomsCount.setData(3);
+            roomsCount.setDescription("Количество комнат на этаже");
 
 
             windows.setData(data);
-            windows.setDescription("desc_windows");
+            windows.setDescription("Окна по этажам, в которых горит свет");
 
             message.setDate(date);
             message.setRoomsCount(roomsCount);

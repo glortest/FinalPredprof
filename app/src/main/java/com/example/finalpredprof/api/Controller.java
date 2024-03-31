@@ -37,7 +37,7 @@ public class Controller implements Runnable {
                 .build();
         // пример работы
         APIService apiService = retrofit.create(APIService.class);
-        apiService.getData(day, year, month).enqueue(new Callback<AllJson>() {
+        apiService.getData(String.valueOf(day), String.valueOf(month), String.valueOf(year)).enqueue(new Callback<AllJson>() {
             @Override
             public void onResponse(@NonNull Call<AllJson> call, @NonNull Response<AllJson> response) {
 
