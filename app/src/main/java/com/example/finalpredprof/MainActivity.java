@@ -3,6 +3,7 @@ package com.example.finalpredprof;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import java.util.List;
 import com.example.finalpredprof.api.Controller;
 
 public class MainActivity extends AppCompatActivity {
+    private Button buttonAdd;
     private Button buttonDate;
     private EditText textInDate;
     private TextView textNumberRooms;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buttonAdd = findViewById(R.id.button_svoi_dannye);
         buttonDate = findViewById(R.id.button);
         textInDate = findViewById(R.id.data_vvod);
         textNumberRooms = findViewById(R.id.number_room);
@@ -53,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        buttonAdd.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddActivity.class);
+            MainActivity.this.startActivity(intent);
+        });
 
         //Controller controller = new Controller(25,1, 23);
         //controller.run();
