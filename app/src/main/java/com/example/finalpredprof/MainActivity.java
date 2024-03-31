@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -96,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
                     for(int j = 0; j < d.getWindowsForRoom().getData().size(); j++){
                         if(j!=0){
                             for(int k = 0; k < d.getWindowsForRoom().getData().get(j)-d.getWindowsForRoom().getData().get(j-1); k++){
-                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? R.drawable.light : R.drawable.dark));
+                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? Color.YELLOW : Color.BLACK));
                             }
                             counter++;
                         }else{
                             for(int k = 0; k < d.getWindowsForRoom().getData().get(j); k++){
-                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? R.drawable.light : R.drawable.dark));
+                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? Color.YELLOW : Color.BLACK));
                             }
                             counter++;
                         }
