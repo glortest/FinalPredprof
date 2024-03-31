@@ -1,5 +1,6 @@
 package com.example.finalpredprof;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class AddActivity extends AppCompatActivity {
     private TextView roomsEnabledTv;
     private TextView roomsEnabledList;
     private Button buttonSave;
+    private Button buttonExit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +43,13 @@ public class AddActivity extends AppCompatActivity {
         roomsEnabledTv = findViewById(R.id.rooms_enabled);
         roomsEnabledList = findViewById(R.id.rooms_enabled_list);
         etages = findViewById(R.id.etages);
+        buttonExit = findViewById(R.id.exit_button);
+
+        buttonExit.setOnClickListener(v -> {
+            Intent intent = new Intent(AddActivity.this, MainActivity.class);
+            AddActivity.this.startActivity(intent);
+        });
+
 
         buttonSave.setOnClickListener(v -> {
             try {
