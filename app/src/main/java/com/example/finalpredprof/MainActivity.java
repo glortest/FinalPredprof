@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,9 +27,7 @@ import com.example.finalpredprof.api.Controller;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonDate;
-    private Spinner spinnerData;
-    private Spinner spinnerMonth;
-    private Spinner spinnerYear;
+    private EditText textInDate;
     private TextView textNumberRooms;
     private TextView textCorrectData;
     private GridView gridView;
@@ -37,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buttonDate = findViewById(R.id.button);
+        textInDate = findViewById(R.id.data_vvod);
+        textNumberRooms = findViewById(R.id.number_room);
+        textCorrectData = findViewById(R.id.data_correct);
+        gridView = findViewById(R.id.grid_view);
+
+
+
+
         Controller controller = new Controller(25,1, 23);
         controller.run();
 
