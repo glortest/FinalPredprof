@@ -37,7 +37,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Количестве окон в комнате:"
+            android:text="Количестве окон в комнатах:"
             android:layout_gravity="left"/>
         <EditText
             android:textSize="10sp"
