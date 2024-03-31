@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.finalpredprof.api.ContrillerPost;
 import com.example.finalpredprof.domain.CountFloorsUseCase;
 import com.example.finalpredprof.room.room_logic.RoomHandler;
 import com.example.finalpredprof.room.models.AllData;
@@ -51,19 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         buttonDate.setOnClickListener(l -> {
+            try {
             String[] date = textInDate.getText().toString().split("-");
             int day = Integer.parseInt(date[0]);
             int month = Integer.parseInt(date[1]);
             int year = Integer.parseInt(date[2]);
 
             // retrofit
-            Controller controller = new Controller(day,month, year);
-            controller.run();
-            controller.data.observeForever(d->{
-                CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
-                list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
-            });
+                Controller controller = new Controller(day, month, year);
+                controller.run();
+                controller.data.observeForever(d -> {
+                    CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
+                    list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
+
+                });
+            } catch (Exception e){}
         });
 
         buttonAdd.setOnClickListener(v -> {

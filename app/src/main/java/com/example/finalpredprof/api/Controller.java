@@ -11,7 +11,9 @@ import android.os.Handler;
 
 import com.example.finalpredprof.api.models.AllJson;
 import com.example.finalpredprof.api.models.Data;
-
+import com.example.finalpredprof.api.models.DataPost;
+import com.example.finalpredprof.api.models.InfPost;
+import com.example.finalpredprof.api.models.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,36 +32,45 @@ public class Controller implements Runnable {
     int month;
     int year;
     public Controller(int day, int month, int year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
+
+            this.day = day;
+            this.month = month;
+            this.year = year;
+
+
     }
 
     @Override
     public void run() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        // пример работы
-        APIService apiService = retrofit.create(APIService.class);
+        try {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            // пример работы
+            APIService apiService = retrofit.create(APIService.class);
 
-        data = new MutableLiveData<Data>();
+            data = new MutableLiveData<Data>();
 
-        apiService.getData(day, month, year).enqueue(new Callback<AllJson>() {
-            @Override
-            public void onResponse(@NonNull Call<AllJson> call, @NonNull Response<AllJson> response) {
-                data.postValue(response.body().getData());
-                assert response.body() != null;
+            apiService.getData(day, month, year).enqueue(new Callback<AllJson>() {
+                @Override
+                public void onResponse(@NonNull Call<AllJson> call, @NonNull Response<AllJson> response) {
+                    Log.d("dfghjkjhgfghjhgfghjkjhgbhnm", response.body().getData().getDate().getDescription());
 
-                Log.d("dfghjkjhgfghjhgfghjkjhgbhnm", response.body().getData().getDate().getDescription());
+                    data.postValue(response.body().getData());
+                    assert response.body() != null;
 
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<AllJson> call, @NonNull Throwable t) {
-                Log.d("Something Wrong", call.toString());
-            }
-        });
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<AllJson> call, @NonNull Throwable t) {
+                    Log.d("Something Wrong", call.toString());
+                }
+            });
+
+        } catch (Exception e) {
+
+        }
     }
 }
