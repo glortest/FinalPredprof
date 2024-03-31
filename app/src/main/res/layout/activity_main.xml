@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="150dp"
+        android:id="@+id/button_svoi_dannye"
+        android:background="@drawable/button_res"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:text="Ввести данные"/>
+
+
     <FrameLayout
         android:layout_gravity="center|top"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -19,34 +30,24 @@
             android:text="Дата:"
             android:layout_gravity="left"/>
 
-        <LinearLayout
-            android:layout_gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <Spinner
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/date_spin"
-                />
-            <Spinner
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/month_spin"/>
-            <Spinner
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/year_spin"/>
-        </LinearLayout>
+        <EditText
+            android:textSize="10sp"
+            android:hint="dd-mm-yyyy"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/data_vvod"
+            android:layout_gravity="right"/>
 
     </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="150dp"
+        android:id="@+id/button"
         android:background="@drawable/button_res"
         android:textColor="@color/white"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
         android:text="Найти данные"/>
@@ -81,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="170dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -104,6 +105,7 @@
 
 
     <GridView
+        android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"

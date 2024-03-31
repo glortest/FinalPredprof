@@ -2,9 +2,10 @@ package com.example.finalpredprof.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WindowsForRoom {
+public class WindowsForRoom implements Serializable {
     @SerializedName("data")
     private List<Integer> data;
 
@@ -17,5 +18,13 @@ public class WindowsForRoom {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setData(List<Integer> data) {
+        this.data = data;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
