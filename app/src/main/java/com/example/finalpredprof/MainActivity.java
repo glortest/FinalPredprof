@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.finalpredprof.domain.CountFloorsUseCase;
 import com.example.finalpredprof.room.room_logic.RoomHandler;
 import com.example.finalpredprof.room.models.AllData;
 import com.example.finalpredprof.room.models.Data;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textCorrectData;
     private GridView gridView;
 
+    private List<Integer> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,87 +47,91 @@ public class MainActivity extends AppCompatActivity {
         textNumberRooms = findViewById(R.id.number_room);
         textCorrectData = findViewById(R.id.data_correct);
         gridView = findViewById(R.id.grid_view);
+        list = new ArrayList<>();
 
 
         buttonDate.setOnClickListener(l -> {
             String[] date = textInDate.getText().toString().split("-");
-            String day = date[0];
-            String month = date[1];
-            String year = date[2];
+            int day = Integer.parseInt(date[0]);
+            int month = Integer.parseInt(date[1]);
+            int year = Integer.parseInt(date[2]);
 
             // retrofit
-        });
+            Controller controller = new Controller(day,month, year);
+            controller.run();
+            controller.data.observeForever(d->{
+                CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
+                list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
+            });
+        });
 
         buttonAdd.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
             MainActivity.this.startActivity(intent);
         });
 
-        //Controller controller = new Controller(25,1, 23);
-        //controller.run();
 
-        Thread th2 = new Thread(() -> { // Тест работы БД
+            Thread th2 = new Thread(() -> { // Тест работы БД
 
-            AllData allData = new AllData();
+                AllData allData = new AllData();
 
-            Message message = new Message();
-            Data data = new Data();
-            Date date = new Date();
-            Date roomsCount = new Date();
+                Message message = new Message();
+                Data data = new Data();
+                Date date = new Date();
+                Date roomsCount = new Date();
 
-            Floor floor1 = new Floor();
-            Floor floor2 = new Floor();
-            Windows windows = new Windows();
-            WindowsForRoom windowsForRoom = new WindowsForRoom();
+                Floor floor1 = new Floor();
+                Floor floor2 = new Floor();
+                Windows windows = new Windows();
+                WindowsForRoom windowsForRoom = new WindowsForRoom();
 
 
-            ArrayList<Integer> data_windows_for_room = new ArrayList<>();
-            data_windows_for_room.add(3);
-            data_windows_for_room.add(2);
-            data_windows_for_room.add(1);
-            windowsForRoom.setData(data_windows_for_room);
-            windowsForRoom.setDescription("Количество окон в каждой из комнат на этаже слева направо");
+                ArrayList<Integer> data_windows_for_room = new ArrayList<>();
+                data_windows_for_room.add(3);
+                data_windows_for_room.add(2);
+                data_windows_for_room.add(1);
+                windowsForRoom.setData(data_windows_for_room);
+                windowsForRoom.setDescription("Количество окон в каждой из комнат на этаже слева направо");
 
-            ArrayList<Boolean> lightArr_floor1 = new ArrayList<>();
-            lightArr_floor1.add(false);
-            lightArr_floor1.add(true);
-            floor1.setLightArr(lightArr_floor1);
+                ArrayList<Boolean> lightArr_floor1 = new ArrayList<>();
+                lightArr_floor1.add(false);
+                lightArr_floor1.add(true);
+                floor1.setLightArr(lightArr_floor1);
 
-            ArrayList<Boolean> lightArr_floor2 = new ArrayList<>();
-            lightArr_floor2.add(true);
-            lightArr_floor2.add(false);
-            floor2.setLightArr(lightArr_floor2);
+                ArrayList<Boolean> lightArr_floor2 = new ArrayList<>();
+                lightArr_floor2.add(true);
+                lightArr_floor2.add(false);
+                floor2.setLightArr(lightArr_floor2);
 
-            ArrayList<Floor> floors_data = new ArrayList<>();
-            floors_data.add(floor1);
-            floors_data.add(floor2);
-            data.setFloors(floors_data);
+                ArrayList<Floor> floors_data = new ArrayList<>();
+                floors_data.add(floor1);
+                floors_data.add(floor2);
+                data.setFloors(floors_data);
 
-            date.setData(1674594000);
-            date.setDescription("Татьянин день");
+                date.setData(1674594000);
+                date.setDescription("Татьянин день");
 
-            roomsCount.setData(3);
-            roomsCount.setDescription("Количество комнат на этаже");
+                roomsCount.setData(3);
+                roomsCount.setDescription("Количество комнат на этаже");
 
 
-            windows.setData(data);
-            windows.setDescription("Окна по этажам, в которых горит свет");
+                windows.setData(data);
+                windows.setDescription("Окна по этажам, в которых горит свет");
 
-            message.setDate(date);
-            message.setRoomsCount(roomsCount);
-            message.setWindowsForRoom(windowsForRoom);
-            message.setWindows(windows);
+                message.setDate(date);
+                message.setRoomsCount(roomsCount);
+                message.setWindowsForRoom(windowsForRoom);
+                message.setWindows(windows);
 
-            allData.setMessage(message);
+                allData.setMessage(message);
 
-            RoomHandler.getInstance(getApplication()).getAppDatabase().dataDao().insertAll(allData);
-            List<AllData> lst = RoomHandler.getInstance(getApplication()).getAppDatabase().dataDao().getAllData();
-            Log.d("123", String.valueOf(lst.size()));
-        });
+                RoomHandler.getInstance(getApplication()).getAppDatabase().dataDao().insertAll(allData);
+                List<AllData> lst = RoomHandler.getInstance(getApplication()).getAppDatabase().dataDao().getAllData();
+                Log.d("123", String.valueOf(lst.size()));
+            });
 
         th2.start();
+
     }
-
-
 }

@@ -9,10 +9,10 @@ public class Data implements Serializable {
     @SerializedName("date")
     private DateInf date;
 
-    @SerializedName("rooms_count")
+    @SerializedName("flats_count")
     private RoomCount rooms_count;
 
-    @SerializedName("windows_for_room")
+    @SerializedName("windows_for_flat")
     private WindowsForRoom windowsForRoom;
 
     @SerializedName("windows")
