@@ -3,137 +3,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="-70dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Количество комнат на этаже:"
-            android:layout_gravity="left"/>
-        <EditText
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/count_rooms"/>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="-30dp"
-        android:layout_gravity="center"
         android:layout_marginRight="15dp"
-        >
-        <TextView
+        android:layout_gravity="center">
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Количестве окон в комнатах:"
-            android:layout_gravity="left"/>
-        <EditText
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/colichestvo_rooms"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
-    </FrameLayout>
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Количество комнат на этаже:"
+                android:layout_gravity="left"/>
+            <EditText
+                android:textSize="12sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/count_rooms"/>
 
+        </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp"
-        >
-        <TextView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="В окнах горит свет:"
-            android:layout_gravity="left"/>
-        <EditText
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/window_light"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Количестве окон в комнатах:"
+                android:layout_gravity="left"/>
+            <EditText
+                android:textSize="12sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/colichestvo_rooms"/>
 
-    </FrameLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp"
-        >
-        <TextView
+        </FrameLayout>
+
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Количество этажей:"
-            android:layout_gravity="left"/>
-        <EditText
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/etages"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="В окнах горит свет:"
+                android:layout_gravity="left"/>
+            <EditText
+                android:textSize="12sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/window_light"/>
 
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="75dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp"
-        >
-        <TextView
+        </FrameLayout>
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Количество горящих квартир:"
-            android:layout_gravity="left"/>
-        <TextView
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/rooms_enabled"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Количество этажей:"
+                android:layout_gravity="left"/>
+            <EditText
+                android:textSize="12sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/etages"/>
 
-    </FrameLayout>
+        </FrameLayout>
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="15dp">
-        <TextView
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Комнаты, в которых горит свет:"
-            android:layout_gravity="left"/>
-        <TextView
-            android:textSize="10sp"
-            android:layout_gravity="right"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:id="@+id/rooms_enabled_list"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Количество светлых квартир:"
+                android:layout_gravity="left"/>
+            <TextView
+                android:textSize="14sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/rooms_enabled"/>
 
-    </FrameLayout>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Комнаты, в которых горит свет:"
+                android:layout_gravity="left"/>
+            <TextView
+                android:textSize="14sp"
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:id="@+id/rooms_enabled_list"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
     <LinearLayout
