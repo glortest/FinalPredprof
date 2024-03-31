@@ -15,13 +15,13 @@ public class CountFloorsUseCase {
 
         for (int i = 0; i < configuration.size(); i++) {
             if (i != 0) {
-                configuration.set(i, configuration.get(i - 1) + configuration.get(i));
+                configuration.set(i, configuration.get(i - 1) + configuration.get(i)); // разбиение на комнаты
             }
         }
 
         int counter = 0;
 
-        List<String> keys = new ArrayList<>(floors.keySet());
+        List<String> keys = new ArrayList<>(floors.keySet()); // работа с форматами данных
         Collections.sort(keys);
 
 
@@ -32,7 +32,7 @@ public class CountFloorsUseCase {
                 if (i == 0) {
                     gh = floors.get(floor).subList(0, configuration.get(i));
                 } else {
-                    gh = floors.get(floor).subList(configuration.get(i - 1), configuration.get(i));
+                    gh = floors.get(floor).subList(configuration.get(i - 1), configuration.get(i)); // проверка на наличие горящих окон
                 }
                 if (gh.contains(true)) {
                     res.add(counter);
@@ -40,7 +40,7 @@ public class CountFloorsUseCase {
             }
         }
 
-        return res;
+        return res; // вывод результата в виде списка с номерами комнат
 
     }
 }
