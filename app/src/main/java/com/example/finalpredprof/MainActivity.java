@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalpredprof.api.ContrillerPost;
 import com.example.finalpredprof.domain.CountFloorsUseCase;
@@ -67,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
                     list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
                 });
-            } catch (Exception e){}
+            } catch (Exception e){
+                Toast.makeText(this, "Введите правильный формат", Toast.LENGTH_LONG).show();
+            }
         });
 
         buttonAdd.setOnClickListener(v -> {
