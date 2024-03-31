@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Controller controller = new Controller(25,1, 23);
-        controller.run();
+        //Controller controller = new Controller(25,1, 23);
+        //controller.run();
 
         Thread th2 = new Thread(() -> { // Тест работы БД
 
