@@ -33,7 +33,7 @@
 
         <EditText
             android:textSize="10sp"
-            android:hint="dd-mm-yyyy"
+            android:hint="dd-mm-yy"
             android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -103,23 +103,30 @@
 
 
 
-
-    <GridView
-        android:id="@+id/grid_view"
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="500dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
-        android:layout_height="500dp"
-        android:numColumns="3"
-        android:layout_gravity="bottom|center"/>
-
-
-
-
-
-
-
-
+        android:layout_gravity="bottom|center"
+        android:orientation="vertical">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_gravity="bottom|center"
+        android:orientation="horizontal">
+        <GridView
+            android:id="@+id/grid_view"
+            android:background="@color/grey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal|vertical"
+            android:numColumns="20"
+            />
+    </HorizontalScrollView>
+    </ScrollView>
 
 
 

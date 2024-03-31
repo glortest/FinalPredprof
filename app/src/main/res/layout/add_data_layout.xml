@@ -1,32 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="-70dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Количество комнат на этаже:"
+            android:layout_gravity="left"/>
+        <EditText
+            android:textSize="10sp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/count_rooms"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="-30dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="15dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Количестве окон в комнате:"
+            android:layout_gravity="left"/>
+        <EditText
+            android:textSize="10sp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/colichestvo_rooms"/>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="15dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="В окнах горит свет:"
+            android:layout_gravity="left"/>
+        <EditText
+            android:textSize="10sp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/window_light"/>
+
+    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center|bottom">
+
+
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="150dp"
+            android:layout_width="180dp"
             android:id="@+id/exit_button"
             android:background="@drawable/button_res"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:text="Ввести данные"/>
+            android:layout_marginRight="5dp"
+            android:text="Назад"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="150dp"
+            android:layout_width="180dp"
+            android:layout_marginLeft="5dp"
             android:id="@+id/save_button"
             android:background="@drawable/button_res"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:text="Ввести данные"/>
+            android:text="Сохранить данные"/>
 
     </LinearLayout>
 
