@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         textCorrectData = findViewById(R.id.data_correct);
         gridView = findViewById(R.id.grid_view);
         list = new ArrayList<>();
-
+//        ContrillerPost contrillerPost = new ContrillerPost();
+//        contrillerPost.run();
         final int numVisibleChildren = gridView.getChildCount();
         final int firstVisiblePosition = gridView.getFirstVisiblePosition();
 

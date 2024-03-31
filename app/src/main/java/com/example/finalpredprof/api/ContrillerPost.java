@@ -21,6 +21,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ContrillerPost implements Runnable{
+    int count;
+    List<Integer> arr;
+    String date;
+
+    public ContrillerPost(int count, List<Integer> arr, String date) {
+        this.count = count;
+        this.arr = arr;
+        this.date = date;
+    }
+
     public static final String BASE_URL = "https://olimp.miet.ru/";
     @Override
     public void run() {
@@ -32,10 +42,9 @@ public class ContrillerPost implements Runnable{
         APIService apiService = retrofit.create(APIService.class);
 
 
-        List<Integer> arr = new ArrayList<>();
-        arr.add(1);
-        InfPost r = new InfPost(1, arr);
-        DataPost dp = new DataPost(r, "10-39-92");
+
+        InfPost r = new InfPost(count, arr);
+        DataPost dp = new DataPost(r, date);
         Call<Message> call = apiService.request(dp);
         call.enqueue(new Callback<Message>() {
             @Override
