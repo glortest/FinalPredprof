@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -13,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.finalpredprof.domain.CountFloorsUseCase;
+import com.example.finalpredprof.domain.GetFloorsUseCase;
+import com.example.finalpredprof.grid.GridViewAdapter;
+import com.example.finalpredprof.grid.ItemModel;
 import com.example.finalpredprof.room.room_logic.RoomHandler;
 import com.example.finalpredprof.room.models.AllData;
 import com.example.finalpredprof.room.models.Data;
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         gridView = findViewById(R.id.grid_view);
         list = new ArrayList<>();
 
+        final int numVisibleChildren = gridView.getChildCount();
+        final int firstVisiblePosition = gridView.getFirstVisiblePosition();
+
 
         buttonDate.setOnClickListener(l -> {
             String[] date = textInDate.getText().toString().split("-");
@@ -60,9 +67,48 @@ public class MainActivity extends AppCompatActivity {
             Controller controller = new Controller(day,month, year);
             controller.run();
             controller.data.observeForever(d->{
+                GetFloorsUseCase getFloorsUseCase = new GetFloorsUseCase();
                 CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
                 list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
+                ArrayList<ItemModel> courseModelArrayList = new ArrayList<>();
+
+                //courseModelArrayList.add(new ItemModel("1", R.drawable.dark));
+                //courseModelArrayList.add(new ItemModel("2", R.drawable.light));
+
+                List<Boolean> listt = getFloorsUseCase.getFloors(d.getWindows().getData());
+
+
+                int len_arr = listt.size();
+
+                int sum_windows = d.getWindowsForRoom().getData().get(d.getWindowsForRoom().getData().size()-1);
+
+
+                int x =  len_arr/sum_windows;
+                int rooms_count = d.getRooms_count().getData();
+                int counter = 0;
+                for(int i = 0; i < x; i++){
+                    counter=(x-1-i)*rooms_count;
+                    for(int j = 0; j < d.getWindowsForRoom().getData().size(); j++){
+                        if(j!=0){
+                            for(int k = 0; k < d.getWindowsForRoom().getData().get(j)-d.getWindowsForRoom().getData().get(j-1); k++){
+                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? R.drawable.light : R.drawable.dark));
+                            }
+                            counter++;
+                        }else{
+                            for(int k = 0; k < d.getWindowsForRoom().getData().get(j); k++){
+                                courseModelArrayList.add(new ItemModel(String.valueOf(counter+1), listt.get(counter) ? R.drawable.light : R.drawable.dark));
+                            }
+                            counter++;
+                        }
+
+                    }
+                }
+
+
+
+                GridViewAdapter adapter = new GridViewAdapter(this, courseModelArrayList);
+                gridView.setAdapter(adapter);
             });
         });
 

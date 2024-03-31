@@ -49,6 +49,7 @@ public class CountFloorsUseCase {
         System.out.println(res);
 
         return res; // вывод результата в виде списка с номерами комнат
-
     }
+
+
 }
