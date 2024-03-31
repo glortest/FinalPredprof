@@ -17,12 +17,16 @@ import com.example.finalpredprof.room.models.WindowsForRoom;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.finalpredprof.api.Controller;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Controller controller = new Controller(25,1, 23);
+        controller.run();
 
         Thread th2 = new Thread(() -> { // Тест работы БД
 
@@ -73,4 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         th2.start();
     }
+
+
 }
