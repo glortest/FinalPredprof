@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             controller.data.observeForever(d->{
                 CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
                 list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
-
+                textNumberRooms.setText(list.toString());
             });
         });
 
