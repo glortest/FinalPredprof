@@ -74,12 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
                 list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
-                Controller controller = new Controller(day, month, year);
-                controller.run();
-                controller.data.observeForever(d -> {
-                    CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
-                    list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
-
+                textNumberRooms.setText(String.valueOf(list));
                 ArrayList<ItemModel> courseModelArrayList = new ArrayList<>();
 
                 //courseModelArrayList.add(new ItemModel("1", R.drawable.dark));
@@ -119,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 GridViewAdapter adapter = new GridViewAdapter(this, courseModelArrayList);
                 gridView.setAdapter(adapter);
             });
-                });
             } catch (Exception e){
                 Toast.makeText(this, "Введите правильный формат", Toast.LENGTH_LONG).show();
             }

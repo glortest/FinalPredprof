@@ -32,7 +32,6 @@ public class GridViewAdapter extends ArrayAdapter<ItemModel> {
 
         ItemModel courseModel = getItem(position);
         TextView courseTV = listitemView.findViewById(R.id.item_text);
-        View item = listitemView.findViewById(R.id.item_layout);
 
         courseTV.setText(courseModel.getText());
         listitemView.setBackgroundColor(courseModel.getBackgroundColor());

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:id="@+id/item_grid"
     android:layout_height="wrap_content"
     android:id="@+id/item_layout"
     android:background="@drawable/light">
@@ -11,7 +10,6 @@
         android:layout_height="60dp"
         android:textColor="@color/white"
         android:text="1"
-        android:id="@+id/number"
         android:gravity="center"
         android:textSize="50sp"/>
 
