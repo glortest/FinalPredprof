@@ -14,5 +14,5 @@ import retrofit2.http.Query;
 public interface APIService {
     @Headers("X-Auth-Token: ppo_11_14883")
     @GET("ppo_it_final")
-    Call<AllJson> getData(@Query("day") String day, @Query("month") String month, @Query("year") String year);
+    Call<AllJson> getData(@Query("day") int day, @Query("month") int month, @Query("year") int year);
 }
