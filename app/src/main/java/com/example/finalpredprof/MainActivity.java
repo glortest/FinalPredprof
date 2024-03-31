@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.finalpredprof.api.ContrillerPost;
 import com.example.finalpredprof.domain.CountFloorsUseCase;
 import com.example.finalpredprof.domain.GetFloorsUseCase;
 import com.example.finalpredprof.grid.GridViewAdapter;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         buttonDate.setOnClickListener(l -> {
+            try {
             String[] date = textInDate.getText().toString().split("-");
             int day = Integer.parseInt(date[0]);
             int month = Integer.parseInt(date[1]);
@@ -70,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 GetFloorsUseCase getFloorsUseCase = new GetFloorsUseCase();
                 CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
                 list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
+
+                Controller controller = new Controller(day, month, year);
+                controller.run();
+                controller.data.observeForever(d -> {
+                    CountFloorsUseCase countFloorsUseCase = new CountFloorsUseCase();
+                    list = countFloorsUseCase.execute(d.getWindows().getData(), d.getWindowsForRoom().getData());
 
                 ArrayList<ItemModel> courseModelArrayList = new ArrayList<>();
 
@@ -110,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
                 GridViewAdapter adapter = new GridViewAdapter(this, courseModelArrayList);
                 gridView.setAdapter(adapter);
             });
+                });
+            } catch (Exception e){
+                Toast.makeText(this, "Введите правильный формат", Toast.LENGTH_LONG).show();
+            }
         });
 
         buttonAdd.setOnClickListener(v -> {
