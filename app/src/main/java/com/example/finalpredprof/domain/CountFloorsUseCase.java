@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CountFloorsUseCase {
     public CountFloorsUseCase() {
-        
+
     }
 
     public List<Integer> execute(Map<String, List<Boolean>> floors, List<Integer> configuration) {
@@ -22,23 +22,31 @@ public class CountFloorsUseCase {
         int counter = 0;
 
         List<String> keys = new ArrayList<>(floors.keySet()); // работа с форматами данных
+        keys.replaceAll(s -> s.replaceAll("[^0-9]", ""));
         Collections.sort(keys);
 
+        List<Integer> keysInt = new ArrayList<>();
+        for(int i = 0; i < keys.size(); i++){
+            keysInt.add(Integer.parseInt(keys.get(i)));
+        }
+        Collections.sort(keysInt);
 
-        for (String floor : keys) {
+        for (Integer floor : keysInt) {
             for (int i = 0; i < configuration.size(); i++) {
                 counter++;
                 List<Boolean> gh;
                 if (i == 0) {
-                    gh = floors.get(floor).subList(0, configuration.get(i));
+                    gh = floors.get("floor_" + floor).subList(0, configuration.get(i));
                 } else {
-                    gh = floors.get(floor).subList(configuration.get(i - 1), configuration.get(i)); // проверка на наличие горящих окон
+                    gh = floors.get("floor_" + floor).subList(configuration.get(i - 1), configuration.get(i)); // проверка на наличие горящих окон
                 }
                 if (gh.contains(true)) {
                     res.add(counter);
                 }
             }
         }
+
+        System.out.println(res);
 
         return res; // вывод результата в виде списка с номерами комнат
 

@@ -63,8 +63,9 @@ public class AddActivity extends AppCompatActivity {
                     List<Boolean> windows = getWindows(windowsLen, enabled, i);
                     floors.put("floor_" + (i + 1), windows);
                 }
+                System.out.println(floors);
                 List<Integer> roomsEnabled = useCase.execute(floors, windowsLen);
-                roomsEnabledTv.setText(roomsEnabled.size());
+                roomsEnabledTv.setText(Integer.toString(roomsEnabled.size()));
                 roomsEnabledList.setText(roomsEnabled.toString());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -85,10 +86,12 @@ public class AddActivity extends AppCompatActivity {
             }
         }
         for (int j = 0; j < enabled.size(); j++) {
-            if(enabled.get(j) < (i + 1) * counter && enabled.get(j) >= i * counter){
-                windows.set(j % counter, true);
+            if (enabled.get(j) < (i + 1) * counter && enabled.get(j) >= i * counter) {
+                System.out.println(enabled.get(j));
+                windows.set((enabled.get(j) - 1) % counter, true);
             }
         }
+        System.out.println(windows);
         return windows;
     }
 }
