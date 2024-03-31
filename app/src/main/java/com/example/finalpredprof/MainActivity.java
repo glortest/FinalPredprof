@@ -2,8 +2,13 @@ package com.example.finalpredprof;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.finalpredprof.room.room_logic.RoomHandler;
 import com.example.finalpredprof.room.models.AllData;
@@ -20,6 +25,13 @@ import java.util.List;
 import com.example.finalpredprof.api.Controller;
 
 public class MainActivity extends AppCompatActivity {
+    private Button buttonDate;
+    private Spinner spinnerData;
+    private Spinner spinnerMonth;
+    private Spinner spinnerYear;
+    private TextView textNumberRooms;
+    private TextView textCorrectData;
+    private GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
